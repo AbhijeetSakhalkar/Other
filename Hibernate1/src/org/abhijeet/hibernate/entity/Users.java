@@ -5,9 +5,9 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-@Entity
-@Table(name = "user")
-public class User {
+@Entity(name = "users")
+@Table(name = "hbmdb.users")
+public class Users {
 
 	@Id
 	@Column(name = "user_id")
@@ -32,9 +32,21 @@ public class User {
 	public void setUserId(int userId) {
 		this.userId = userId;
 	}
+	
+	public Users() {
+	}
 
-	public User(String username, String password, String firstName,
+	public Users(String username, String password, String firstName,
 			String lastname) {
+		this.username = username;
+		this.password = password;
+		this.firstName = firstName;
+		this.lastname = lastname;
+	}
+
+	public Users(int userId, String username, String password, String firstName,
+			String lastname) {
+		this.userId = userId;
 		this.username = username;
 		this.password = password;
 		this.firstName = firstName;
@@ -71,6 +83,12 @@ public class User {
 
 	public void setLastname(String lastname) {
 		this.lastname = lastname;
+	}
+
+	@Override
+	public String toString() {
+		return "Users [userId=" + userId + ", username=" + username + ", password=" + password + ", firstName="
+				+ firstName + ", lastname=" + lastname + "]";
 	}
 
 }

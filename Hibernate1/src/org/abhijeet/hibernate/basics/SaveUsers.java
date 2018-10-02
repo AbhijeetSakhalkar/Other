@@ -1,18 +1,18 @@
-package org.abhijeet.hibernate.other;
+package org.abhijeet.hibernate.basics;
 
-import org.abhijeet.hibernate.entity.User;
+import org.abhijeet.hibernate.entity.Users;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.dialect.pagination.FirstLimitHandler;
 
-public class App {
+public class SaveUsers {
 
 	public static void main(String[] args) {
 		
 		SessionFactory factory = new Configuration()
-								 .configure("Hibernate.cfg.xml")
-								 .addAnnotatedClass(User.class)
+								 .configure("hibernate.cfg.xml")
+								 .addAnnotatedClass(Users.class)
 								 .buildSessionFactory();
 		
 		Session session = factory.getCurrentSession();
@@ -20,7 +20,7 @@ public class App {
 		try {
 
 			// Create object of the entity type
-			User user = new User("sinaia", "sinaia", "Abhijeet", "Sakhalkar");
+			Users user = new Users(1,"sinaia", "sinaia", "Abhijeet", "Sakhalkar");
 			
 			// Start transaction
 			session.beginTransaction();
